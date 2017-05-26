@@ -48,6 +48,7 @@ function initMap() {
 
 	var directionsService = new google.maps.DirectionsService;
 	var directionsDisplay = new google.maps.DirectionsRenderer;
+	var tarifa = document.getElementById("tarifa");
 
 	var calculateAndDisplayRoute = function(directionsService, directionsDisplay){
 	    directionsService.route({
@@ -56,8 +57,21 @@ function initMap() {
 	      travelMode: 'DRIVING'
 	    }, function(response, status){
 	        if (status === 'OK') {
-	          directionsDisplay.setDirections(response);
-	        }else{
+	        	var distancia = Number((response.routes[0].legs[0].distance.text.replace("km","")).replace(",","."));
+	        		tarifa.classList.remove("none");
+
+	        		var costo = distancia*1.75;
+	        		if (costo<4) {
+	        			tarifa.innerHTML = "S/. 4"
+	        		}
+
+	        	tarifa.innerHTML = "S/. " + parseInt(costo);
+	        	
+	        	console.log(response.routes[0].legs[0].distance.text);
+	        	directionsDisplay.setDirections(response); }
+	        
+
+	        else{
 	          alert("No encontramos una ruta.");
 	        }
 	    });
