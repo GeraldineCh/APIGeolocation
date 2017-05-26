@@ -65,11 +65,10 @@ function initMap() {
 	        			tarifa.innerHTML = "S/. 4"
 	        		}
 
-	        	tarifa.innerHTML = "S/. " + parseInt(costo);
+	        	else {tarifa.innerHTML = "S/. " + parseInt(costo);}
 	        	
 	        	console.log(response.routes[0].legs[0].distance.text);
 	        	directionsDisplay.setDirections(response); }
-	        
 
 	        else{
 	          alert("No encontramos una ruta.");
