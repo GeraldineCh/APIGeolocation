@@ -30,6 +30,10 @@ input {
 	border-radius: 5px;
 }
 
+.form-inline {
+	display: -webkit-inline-box;
+}
+
 .this-yellow {
 	background-color: #f7b617;
 	color: white;
